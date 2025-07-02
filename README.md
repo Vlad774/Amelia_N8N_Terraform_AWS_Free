@@ -1,1 +1,1 @@
-# Amelia_N8N_Terraform_AWS_Free
+# Amelia_N8N_Terraform_AWS_Free_Tier
