@@ -13,3 +13,9 @@ variable "instance_type" {
   default     = "t3.micro"
 }
 
+variable "n8n_user" {
+  description = "n8n basic auth username"
+  default     = "admin"
+}
+
+
