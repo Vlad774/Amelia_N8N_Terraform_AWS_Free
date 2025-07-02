@@ -45,3 +45,26 @@ resource "aws_security_group" "Amelia_n8n_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+
+resource "aws_instance" "n8n" {
+  ami             = var.ami_id
+  instance_type   = var.instance_type
+  security_groups = [aws_security_group.Amelia_n8n_sg.name]
+
+  user_data = <<-EOF
+    #!/bin/bash
+    apt-get update
+    apt-get install -y docker.io docker-compose
+    systemctl start docker
+    systemctl enable docker
+    mkdir -p /data/n8n
+    docker run -d --name n8n --restart=always -p 5678:5678  -e N8N_BASIC_AUTH_ACTIVE=true -e N8N_SECURE_COOKIE=false -e N8N_BASIC_AUTH_USER=${var.n8n_user}  -e N8N_BASIC_AUTH_PASSWORD=${var.n8n_password} n8nio/n8n
+  EOF
+
+  tags = {
+    Name = "n8n-server"
+  }
+}
+
+
