@@ -18,4 +18,9 @@ variable "n8n_user" {
   default     = "admin"
 }
 
+variable "n8n_password" {
+  description = "n8n basic auth password"
+  default     = "changeme"
+}
+
 
