@@ -59,7 +59,17 @@ resource "aws_instance" "n8n" {
     systemctl start docker
     systemctl enable docker
     mkdir -p /data/n8n
-    docker run -d --name n8n --restart=always -p 5678:5678  -e N8N_BASIC_AUTH_ACTIVE=true -e N8N_SECURE_COOKIE=false -e N8N_BASIC_AUTH_USER=${var.n8n_user}  -e N8N_BASIC_AUTH_PASSWORD=${var.n8n_password} n8nio/n8n
+
+    docker run -d \
+      --name n8n \
+      --restart=always \
+      -p 5678:5678 \
+      -v /data/n8n:/home/node/.n8n \
+      -e N8N_BASIC_AUTH_ACTIVE=true \
+      -e N8N_SECURE_COOKIE=false \
+      -e N8N_BASIC_AUTH_USER=${var.n8n_user} \
+      -e N8N_BASIC_AUTH_PASSWORD=${var.n8n_password} \
+      n8nio/n8n
   EOF
 
   tags = {
