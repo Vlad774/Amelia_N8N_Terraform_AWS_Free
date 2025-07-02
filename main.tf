@@ -68,3 +68,8 @@ resource "aws_instance" "n8n" {
 }
 
 
+resource "aws_eip" "n8n_eip" {
+  instance = aws_instance.n8n.id
+}
+
+
