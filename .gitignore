@@ -15,9 +15,7 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Terraform variable files containing sensitive data
-*.auto.tfvars
-*.tfvars
+
 
 # Sensitive output files
 *.secret
