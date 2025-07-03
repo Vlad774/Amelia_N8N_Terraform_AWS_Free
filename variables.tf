@@ -23,4 +23,12 @@ variable "n8n_password" {
   default     = "changeme"
 }
 
+variable "db_password" {
+  description = "Password for PostgreSQL user n8n"
+  default     = "supersecretpassword"
+}
 
+variable "key_name" {
+  description = "Name of the SSH key pair in AWS to attach to EC2 instances"
+  default     = "n8n_db_key"
+}
