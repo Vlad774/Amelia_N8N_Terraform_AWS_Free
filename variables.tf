@@ -30,5 +30,5 @@ variable "db_password" {
 
 variable "key_name" {
   description = "Name of the SSH key pair in AWS to attach to EC2 instances"
-  default     = "n8n_db_key"
+  default     = "N8N_Vlad"
 }
